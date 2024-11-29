@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hazik Studio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .app-container {
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        input {
+            padding: 10px;
+            margin: 10px 0;
+            width: 80%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Name Input Section -->
+        <div id="name-section">
+            <label for="userName">Enter Your Name:</label>
+            <input type="text" id="userName" placeholder="Your Name">
+            <button onclick="saveName()">Submit</button>
+        </div>
+
+        <!-- Game Download Section -->
+        <div id="game-download-section" style="display:none;">
+            <h2>Indian Mini Truck Simulator</h2>
+            <button onclick="downloadGame()">Download Game</button>
+        </div>
+
+        <!-- Rating Section -->
+        <div id="rating-section" style="display:none;">
+            <h3>Rate the Game (0-5 stars):</h3>
+            <input type="number" id="rating" min="0" max="5" step="1" placeholder="Rate (0-5)">
+            <button onclick="submitRating()">Submit Rating</button>
+        </div>
+
+        <!-- Contact Us Section -->
+        <div id="contact-us-section">
+            <button onclick="showContact()">Contact Us</button>
+        </div>
+    </div>
+
+    <script>
+        // Function to save the name and show the game download section
+        function saveName() {
+            var name = document.getElementById('userName').value;
+            if (name) {
+                alert('Hello, ' + name + '! Welcome to Hazik Studio.');
+                document.getElementById('name-section').style.display = 'none';
+                document.getElementById('game-download-section').style.display = 'block';
+            } else {
+                alert('Please enter your name.');
+            }
+        }
+
+        // Function to start the game download
+        function downloadGame() {
+            var downloadLink = 'https://drive.google.com/uc?export=download&id=1-bu-NoOtbGVLklZjIknvEchpmba8zJsZ';  // Update the link
+            window.open(downloadLink, '_blank'); // Open download link in a new tab
+
+            // Show the rating section after download starts
+            document.getElementById('game-download-section').style.display = 'none';
+            document.getElementById('rating-section').style.display = 'block';
+        }
+
+        // Function to submit the rating
+        function submitRating() {
+            var rating = document.getElementById('rating').value;
+            if (rating >= 0 && rating <= 5) {
+                alert('Thank you for your rating of ' + rating + ' stars!');
+            } else {
+                alert('Please provide a rating between 0 and 5.');
+            }
+        }
+
+        // Function to show contact information
+        function showContact() {
+            var contactMessage = 'You can contact us at: hazikdevlog@gmail.com or visit our YouTube channel: Hazik Devlog';
+            alert(contactMessage);
+        }
+    </script>
+</body>
+</html>
